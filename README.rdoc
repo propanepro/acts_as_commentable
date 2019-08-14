@@ -1,3 +1,8 @@
+= This Fork
+
+Adds `Juixe::Acts::Commentable.define_role_based_inflection_5(role)` as an alias of
+`define_role_based_inflection_4(role)` in order to support Rails 5.x
+
 = Acts As Commentable
 
 Provides a single Comment model that can be attached to any model(s) within your app. It creates
@@ -21,7 +26,7 @@ Add the following line to your Gemfile
 
   gem 'acts_as_commentable', git: 'git@github.com:jackdempsey/acts_as_commentable.git', branch: '2.x'
 
- 
+
 == Generator
 
 
@@ -30,7 +35,7 @@ Add the following line to your Gemfile
   rails g comment
 
 === Rails 2
-  
+
   script/generate comment
 
 Then migrate your database to add the comments model:
@@ -40,13 +45,13 @@ Then migrate your database to add the comments model:
 == Usage
 
 Make the desired ActiveRecord model act as commentable:
- 
+
   class Post < ActiveRecord::Base
     acts_as_commentable
   end
 
 Add a comment to a model instance by adding the following to the controller:
- 
+
   commentable = Post.create
   comment = commentable.comments.create
   comment.title = "First comment."
@@ -55,12 +60,12 @@ Add a comment to a model instance by adding the following to the controller:
 
 
 Fetch comments for the commentable model by adding the following to the view:
- 
+
   commentable = Post.find(1)
   comments = commentable.comments.recent.limit(10).all
 
 You can also add different types of comments to a model:
- 
+
   class Todo < ActiveRecord::Base
     acts_as_commentable :public, :private
   end
